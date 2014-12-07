@@ -1,0 +1,112 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+(mediawiki-open  "Manifiesto de la Literatura Huiqui")
+
+
+(mediawiki-open  "retrato_de_dorita_garay.wilde.harmodio.huiqui")
+#<buffer local.literaturahuiqui: retrato de dorita garay.wilde.harmodio.huiqui>
+
+(concat "a" ":")
+
+(mediawiki-get "local.literaturahuiqui" "Manifiesto de la Literatura Huiqui")
+
+(mediawiki-get "local.literaturahuiqui" "retrato_de_dorita_garay.wilde.harmodio.huiqui")
+
+(mediawiki-api-query-title "local.literaturahuiqui" "Manifiesto de la Literatura Huiqui")
+
+=>el pedo está aquí
+(mediawiki-api-query-title "local.literaturahuiqui" "retrato_de_dorita_garay.wilde.harmodio.huiqui")
+
+(mediawiki-api-query-revisions "local.literaturahuiqui" "Manifiesto de la Literatura Huiqui" (list "ids" "timestamp" "flags" "comment" "user" "content"))
+((pages nil (page (... ... ... ... ... ... ... ... ... ... ...) (revisions nil ...))))
+
+(let* ((pagelist (mediawiki-api-query-revisions "local.literaturahuiqui" "Manifiesto de la Literatura Huiqui"
+                    (list "ids" "timestamp" "flags" "comment" "user" "content"))))
+    (mediawiki-pagelist-find-page pagelist "Manifiesto de la Literatura Huiqui"))
+(page ((pageid . "75") (ns . "0") (title . "Manifiesto de la Literatura Huiqui") (contentmodel . "wikitext") (pagelanguage . "es") (touched . "2014-06-18T14:43:00Z") (lastrevid . "949") (counter . "627") (length . "3256") (starttimestamp . "2014-10-22T15:28:34Z") (edittoken . "+\\")) (revisions nil (rev (... ... ... ... ... ... ... ...) "''Versión 3.2''
+
+== I. Axiomas Huiqui: ==
+#Toda lectura es escritura: todo lector, un escritor.
+#Los derechos de escritor terminan en el punto inicial de la lectura. A partir de este punto, sólo existen los derechos de lector.
+#El primer derecho de lector consiste en despojar al escritor de su texto para reescribirlo. Llamaremos a este acto huiquificación, al conjunto de sus producciones literatura huiqui y al derechohabiente, huikritor.
+#El segundo derecho de lector consiste en publicar la referida huiquificación de manera inmediata, tantas veces y en tantas versiones como el derechohabiente considere necesario.
+#El papel del Internet es el papel natural de la literatura huiqui.
+
+== II. Corolarios derivados de los anteriores axiomas: ==
+#No hay mala literatura, sólo malas versiones esperando un huikritor.
+#La literatura no se crea ni se destruye, sólo se huiquifica.
+#La vanidad pierde al hombre en general y al escritor en particular. La literatura huiqui es un instrumento para acabar con la vanidad, si no del hombre, del escritor.
+#El Quijote es el único texto no huiquificable. Por extensión, el texto en donde Borges huiquifica el Quijote, tampoco lo es.
+#Este manifiesto tiene la modesta pretensión de cambiar para siempre la historia de la literatura (huiqui).
+#Salvo los textos citados en la cláusula a), todo texto es huiquificable, incluido el presente manifiesto.
+#Muchos años después, frente al pelotón de huiquilamiento, el dinosaurio recordó el día en que seguía ahí.
+
+== III. Movimientos de la literatura huiqui: ==
+* Huiquihomenaje: El huiqritor ante la obra de un gran escritor.
+* Huiquisalvamento: El huiqritor ante la maniobra de Isabel Allende.
+* Hara-wiki: El huiqritor antes sus sobras completas.
+== IV. Procedimientos de la literatura huiqui: ==
+''(o instrucciones para huiquificar)''
+#Antes de comenzar, conjugue: yo huiquifico, tú huiquificas, él huiquifica, nosotros huiquificamos, ustedes y ellos huiquifican. Vosotros (esperamos) huiquificaréis también.
+#Localice un texto.
+#Exprópielo aplicando el siguiente epitafio: 
+<code>
+           Con el poder que me confieren 
+           los derechos de lector 
+           expropio este texto 
+           de las manos de su autor 
+           para entregarlo al árbol 
+           de la literatura huiqui. 
+</code>      
+#Huiquifíquelo siguiendo alguno de los tres movimientos de la literatura huiqui.
+#Bautícelo según la siguiente convención: 
+<code>
+                título_original.escritor_despojado.wikritor_1.wikritor_2...wikritor_n.wiki 
+                (ejemplo: don_quijote.pierre_menard.borges.huiqui)
+</code>
+#Publíquelo de inmediato en [[Literatura Huiqui|www.literaturawiki.org]]
+#Destape una cerveza, es usted un ''huiqritor''.
+*Para un primer acercamiento a la literatura huiqui, pronuncie continuadamente la palabra kiwi diez veces (de preferencia sin respirar).
+
+
+<center>''Gutemberg agoniza''</center>
+
+
+<center>'''Oswaldo Zavala'''</center>
+<center>'''Miguel Tapia Alcaraz'''</center>
+<center>'''Jorge Harmodio'''</center>
+<center>'''Marcos Eymar'''</center>
+
+
+<center>''El Cuadrante de Caborca'', abril del 2007.</center>
+
+<center>[[Literatura Huiqui|www.literaturawiki.org]]</center>
+
+== Huiquifícame ==
+[[Wiki para poetas]]")))
+
+
+==>Este es el bueno!
+
+(let* ((pagelist (mediawiki-api-query-revisions "local.literaturahuiqui" "Retrato_de_dorita_garay.wilde.harmodio.huiqui"
+                    (list "ids" "timestamp" "flags" "comment" "user" "content"))))    (mediawiki-pagelist-find-page pagelist "Retrato_de_dorit\
+a_garay.wilde.harmodio.huiqui"))
+
+
+(mediawiki-open  "retrato_de_dorita_garay.wilde.harmodio.huiqui")
+#<buffer literaturahuiqui: Retrato de dorita garay.wilde.harmodio.huiqui>
+
+
+
+==> solución
+(store-substring "retrato_de_dorita_garay.wilde.harmodio.huiqui" 0 (upcase (aref "retrato_de_dorita_garay.wilde.harmodio.huiqui" 0)))
+"Retrato_de_dorita_garay.wilde.harmodio.huiqui"
+
+(store-substring "Retrato_de_dorita_garay.wilde.harmodio.huiqui" 0 (upcase (aref "Retrato_de_dorita_garay.wilde.harmodio.huiqui" 0)))
+"Retrato_de_dorita_garay.wilde.harmodio.huiqui"
+
+
+
+
