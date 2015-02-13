@@ -6,12 +6,13 @@
 ;;      Chong Yidong <cyd at stupidchicken com> for wikipedia.el,
 ;;      Uwe Brauer <oub at mat.ucm.es> for wikimedia.el
 ;; Author: Mark A. Hershberger <mah@everybody.org>
+;; Debugging: Jorge García Flores <jgflores@lipn.fr>
 ;; Version: 20130223.1141
 ;; X-Original-Version: 2.2.4.2
 ;; Created: Sep 17 2004
 ;; Keywords: mediawiki wikipedia network wiki
 ;; URL: http://launchpad.net/mediawiki-el
-;; Last Modified: <2013-02-23 14:41:05 mah>
+;; Last Modified: <2015-02-13>
 
 (defconst mediawiki-version "2.2.4.2"
   "Current version of mediawiki.el")
@@ -510,7 +511,7 @@ later."
   :tag "MediaWiki Site Default"
   :group 'mediawiki)
 
-(defcustom mediawiki-debug nil
+(defcustom mediawiki-debug 1
   "Turn on debugging (non-nil)"
   :type 'boolean
   :tag "MediaWiki Debugging"
@@ -1291,8 +1292,17 @@ get a cookie."
 (defun mediawiki-save-page (site title summary content)
   "Save the current page to a MediaWiki wiki."
   ;; FIXME error checking, conflicts!
+  ;;JGF Fix: get base and start timestamps before saving!
   (if (not mediawiki-edittoken)
       (error "Need an edit token!")
+    ;(message "before get basetimestamp: %s" mediawiki-basetimestamp)
+    ;(message "before get starttimestamp: %s" mediawiki-starttimestamp)
+    (setq mediawiki-basetimestamp
+	  (mediawiki-page-get-revision (mediawiki-api-query-title site title) 0 'timestamp))
+    (setq mediawiki-starttimestamp
+        (mediawiki-page-get-metadata (mediawiki-api-query-title site title) 'starttimestamp))
+    ;(message "after get basetimestamp: %s" mediawiki-basetimestamp)
+    ;(message "after get starttimestamp: %s" mediawiki-starttimestamp)
     (mediawiki-api-call site "edit" (list (cons "title"
                                                 (mediawiki-translate-pagename title))
                                           (cons "text" content)
