@@ -12,7 +12,7 @@
 ;; Created: Sep 17 2004
 ;; Keywords: mediawiki wikipedia network wiki
 ;; URL: http://launchpad.net/mediawiki-el
-;; Last Modified: <2015-02-13>
+;; Last Modified: <Last changed 17-02-2015 19:55:38 by Jorge Garcia Flores, garciaflores>
 
 (defconst mediawiki-version "2.2.4.2"
   "Current version of mediawiki.el")
@@ -1772,6 +1772,8 @@ starting point. Generalise to make `previous-long-line'."
   (unless  (featurep 'xemacs)
     (local-set-key [(shift iso-lefttab)] 'outline-cycle)
     (local-set-key [iso-left-tab] 'outline-cycle))
+;; Change outline promote/demote from Ctrl left/right to Meta left/right
+;; JGF 2014
   (local-set-key [(meta left)]  'outline-promote)
   (local-set-key [(meta right)] 'outline-demote)
   (local-set-key [(shift return)] 'newline-and-indent)
